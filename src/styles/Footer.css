@@ -1,0 +1,250 @@
+
+/* =========================================
+   FOOTER SECTION
+========================================= */
+
+.footer {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+
+    padding:
+        55px clamp(20px, 4vw, 80px)
+        30px;
+
+    background-color: var(--surface);
+
+    border-top: 1px solid var(--border);
+}
+
+/* =========================================
+   FOOTER CONTAINER
+========================================= */
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+}
+
+/* =========================================
+   FOOTER BRAND
+========================================= */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+/* =========================================
+   FOOTER LOGO
+========================================= */
+
+.footer-logo {
+    color: var(--gold-light);
+
+    font-family: var(--display);
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.footer-logo:hover {
+    color: var(--teal);
+}
+
+/* =========================================
+   FOOTER DESCRIPTION
+========================================= */
+
+.footer-brand p {
+    max-width: 680px;
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+}
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    padding-top: 24px;
+
+    border-top: 1px solid var(--border);
+}
+
+/* =========================================
+   COPYRIGHT
+========================================= */
+
+.footer-copyright {
+    color: var(--muted);
+
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+.footer-back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: var(--gold-light);
+
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.footer-back-to-top svg {
+    flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.footer-back-to-top:hover {
+    color: var(--teal);
+}
+
+.footer-back-to-top:hover svg {
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   KEYBOARD FOCUS
+========================================= */
+
+.footer-logo:focus-visible,
+.footer-back-to-top:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+    .footer {
+        padding: 50px 24px 30px;
+    }
+
+    .footer-container {
+        gap: 40px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+    .footer {
+        padding: 45px 20px 25px;
+    }
+
+    .footer-container {
+        gap: 35px;
+    }
+
+    .footer-logo {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    .footer-brand p {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+
+        text-align: center;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+    .footer-logo {
+        font-size: 15px;
+        letter-spacing: 0.04em;
+    }
+
+    .footer-brand p {
+        max-width: 280px;
+        font-size: 10px;
+    }
+
+    .footer-copyright {
+        font-size: 9px;
+    }
+}
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .footer {
+        padding-inline: 16px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-logo,
+    .footer-back-to-top,
+    .footer-back-to-top svg {
+        transition: none;
+    }
+
+    .footer-back-to-top:hover svg {
+        transform: none;
+    }
+}

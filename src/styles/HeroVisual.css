@@ -1,0 +1,203 @@
+
+/* =========================================
+   AUTOMATION CORE CONTAINER
+========================================= */
+
+.automation-core-wrap {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 520px;
+}
+
+/* =========================================
+   AMBIENT GLOW
+========================================= */
+
+.automation-core-glow {
+    position: absolute;
+    z-index: 0;
+
+    width: 85%;
+    max-width: 480px;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(131, 201, 199, 0.22) 0%,
+        rgba(131, 201, 199, 0.10) 35%,
+        rgba(198, 155, 87, 0.05) 55%,
+        transparent 75%
+    );
+
+    filter: blur(35px);
+    pointer-events: none;
+
+    animation: energy-glow 5s ease-in-out infinite;
+}
+
+/* =========================================
+   FLOATING AUTOMATION CORE IMAGE
+========================================= */
+
+.automation-core-image {
+    position: relative;
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+
+    object-fit: contain;
+    user-select: none;
+
+    filter:
+        drop-shadow(0 0 15px rgba(131, 201, 199, 0.20))
+        drop-shadow(0 0 35px rgba(198, 155, 87, 0.10));
+
+    animation: core-float 6s ease-in-out infinite;
+}
+
+/* =========================================
+   STATIONARY GROUND GLOW
+========================================= */
+
+.automation-core-ground-glow {
+    position: absolute;
+    z-index: 1;
+
+    bottom: 0;
+    left: 50%;
+
+    width: 55%;
+    max-width: 290px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(131, 201, 199, 0.55) 0%,
+        rgba(131, 201, 199, 0.25) 35%,
+        rgba(131, 201, 199, 0.08) 65%,
+        transparent 100%
+    );
+
+    filter: blur(14px);
+    pointer-events: none;
+
+    transform: translateX(-50%);
+}
+
+/* =========================================
+   FLOATING ANIMATION
+========================================= */
+
+@keyframes core-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* =========================================
+   AMBIENT GLOW ANIMATION
+========================================= */
+
+@keyframes energy-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+    }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+    .automation-core-wrap {
+        min-height: 420px;
+    }
+
+    .automation-core-image {
+        max-width: 420px;
+    }
+
+    .automation-core-ground-glow {
+        max-width: 240px;
+        height: 25px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+    .automation-core-wrap {
+        min-height: 340px;
+    }
+
+    .automation-core-image {
+        max-width: 340px;
+    }
+
+    .automation-core-glow {
+        width: 90%;
+    }
+
+    .automation-core-ground-glow {
+        width: 60%;
+        max-width: 200px;
+        height: 20px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .automation-core-wrap {
+        min-height: 300px;
+    }
+
+    .automation-core-image {
+        max-width: 290px;
+    }
+
+    .automation-core-ground-glow {
+        max-width: 170px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .automation-core-image,
+    .automation-core-glow {
+        animation: none;
+    }
+}

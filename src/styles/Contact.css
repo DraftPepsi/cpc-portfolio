@@ -1,0 +1,355 @@
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-section.section-shell {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding: 110px clamp(20px, 4vw, 80px) 125px;
+    background: transparent;
+}
+
+/* =========================================
+   CONTACT CONTAINER
+========================================= */
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+/* =========================================
+   CONTACT HEADER
+========================================= */
+
+.contact-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.contact-header .section-eyebrow {
+    display: block;
+    margin-bottom: 18px;
+
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+}
+
+.contact-header h2 {
+    margin: 0 0 24px;
+
+    color: var(--text);
+    font-family: var(--display);
+    font-size: clamp(31px, 3.3vw, 44px);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.contact-header p {
+    max-width: 680px;
+    margin: 0;
+
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   CONTACT ACTIONS
+========================================= */
+
+.contact-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+
+    width: 100%;
+    margin-top: 42px;
+}
+
+/* =========================================
+   PRIMARY ACTIONS
+========================================= */
+
+.contact-primary-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    width: 100%;
+}
+
+/* =========================================
+   EMAIL AND RESUME BUTTONS
+========================================= */
+
+.contact-email-button,
+.contact-resume-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    min-width: 220px;
+    min-height: 54px;
+    padding: 15px 26px;
+
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* =========================================
+   EMAIL BUTTON
+========================================= */
+
+.contact-email-button {
+    color: var(--bg);
+    background-color: var(--gold);
+}
+
+.contact-email-button:hover {
+    transform: translateY(-3px);
+
+    background-color: var(--gold-light);
+    border-color: var(--gold-light);
+
+    box-shadow:
+        0 12px 30px rgba(198, 155, 87, 0.16);
+}
+
+/* =========================================
+   DOWNLOAD RESUME BUTTON
+========================================= */
+
+.contact-resume-button {
+    color: var(--teal);
+    background-color: rgba(131, 201, 199, 0.06);
+    border-color: rgba(131, 201, 199, 0.4);
+}
+
+.contact-resume-button:hover {
+    transform: translateY(-3px);
+
+    color: var(--bg);
+    background-color: var(--teal);
+    border-color: var(--teal);
+
+    box-shadow:
+        0 12px 30px rgba(131, 201, 199, 0.12);
+}
+
+/* =========================================
+   CONTACT PLATFORMS
+========================================= */
+
+.contact-platforms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.contact-platforms-label {
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+
+/* =========================================
+   SOCIAL LINKS - TWO COLUMNS
+========================================= */
+
+.contact-socials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    width: 100%;
+    max-width: 620px;
+}
+
+/* =========================================
+   SOCIAL LINK BUTTONS
+========================================= */
+
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    min-width: 0;
+    min-height: 54px;
+    padding: 14px 20px;
+
+    color: var(--text);
+    background-color: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.contact-social-link:hover {
+    transform: translateY(-3px);
+
+    color: var(--gold-light);
+    background-color: var(--surface-raised);
+    border-color: var(--gold);
+}
+
+.contact-social-link svg {
+    flex-shrink: 0;
+}
+
+.contact-social-link svg:last-child {
+    color: var(--teal);
+    margin-left: auto;
+}
+
+/* =========================================
+   KEYBOARD FOCUS
+========================================= */
+
+.contact-email-button:focus-visible,
+.contact-resume-button:focus-visible,
+.contact-social-link:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+    .contact-section.section-shell {
+        padding: 85px 24px 100px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+    .contact-section.section-shell {
+        padding: 70px 20px 85px;
+    }
+
+    .contact-header h2 {
+        font-size: clamp(28px, 6vw, 38px);
+    }
+
+    .contact-header p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .contact-actions {
+        margin-top: 34px;
+        gap: 30px;
+    }
+
+    .contact-socials {
+        gap: 12px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+    .contact-primary-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-email-button,
+    .contact-resume-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .contact-socials {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .contact-social-link {
+        padding: 13px 16px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .contact-section.section-shell {
+        padding-inline: 16px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-email-button,
+    .contact-resume-button,
+    .contact-social-link {
+        transition: none;
+    }
+
+    .contact-email-button:hover,
+    .contact-resume-button:hover,
+    .contact-social-link:hover {
+        transform: none;
+    }
+}

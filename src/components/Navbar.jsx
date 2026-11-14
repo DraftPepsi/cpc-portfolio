@@ -1,21 +1,82 @@
+
 import { useState } from 'react';
-const links = [['Projects','#projects'],['Experience','#experience'],['Toolkit','#toolkit'],['About','#about']];
+import '../styles/Navbar.css';
+import brandIcon from '../assets/c-emblem.png';
+
+const links = [
+  ['Projects', '#projects'],
+  ['Experience', '#experience'],
+  ['Skills', '#toolkit'],
+  ['Certifications', '#certifications'],
+  ['About', '#about']
+];
+
 export default function Navbar() {
-  const [open,setOpen] = useState(false);
-  return <header className="site-header">
-    <a className="wordmark" href="#home">
-      <span className="wordmark-mark">P.</span>
-      <span className="wordmark-name">CARL PATRICK CAGUBCUB</span>
-    </a>
-    <button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={()=>setOpen(!open)}>
-      <span/><span/>
-    </button>
-    <nav className={open?'nav-links is-open':'nav-links'} aria-label="Main navigation">
-      {links.map(([label,href])=><a key={label} href={href} onClick={()=>setOpen(false)}>{label}</a>)}
-      <a className="nav-contact" href="mailto:your.email@example.com">Contact 
-        <span>↗
+  const [open, setOpen] = useState(false);
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
+  return (
+    <header className="site-header">
+      <a
+        className="wordmark"
+        href="#home"
+        onClick={closeMenu}
+      >
+        <img
+          className="wordmark-mark"
+          src={brandIcon}
+          alt=""
+          aria-hidden="true"
+          draggable="false"
+        />
+
+        <span className="wordmark-name">
+          CARL PATRICK CAGUBCUB
         </span>
       </a>
-    </nav>
-  </header>;
+
+      <button
+        className="menu-toggle"
+        type="button"
+        aria-label={open ? 'Close navigation' : 'Open navigation'}
+        aria-expanded={open}
+        aria-controls="main-navigation"
+        onClick={() => setOpen((previous) => !previous)}
+      >
+        <span />
+        <span />
+      </button>
+
+      <nav
+        id="main-navigation"
+        className={open ? 'nav-links is-open' : 'nav-links'}
+        aria-label="Main navigation"
+      >
+        {links.map(([label, href]) => (
+          <a
+            key={label}
+            href={href}
+            onClick={closeMenu}
+          >
+            {label}
+          </a>
+        ))}
+
+        <a
+          className="nav-contact"
+          href="#contact"
+          onClick={closeMenu}
+        >
+          Get in touch
+
+          <span aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      </nav>
+    </header>
+  );
 }

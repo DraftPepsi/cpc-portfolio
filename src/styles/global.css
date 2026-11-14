@@ -1,96 +1,140 @@
 
-@import url('./components.css');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
 
 :root {
     font-family: 'Manrope', sans-serif;
-    color: #f4f0fa;
-    background: #08070d;
+    color: #e9e1d5;
+    background-color: #101819;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 
-    --bg: #08070d;
-    --surface: #100e19;
-    --surface-raised: #171322;
+    /* Backgrounds */
+    --bg: #101819;
+    --surface: #191e21;
+    --surface-raised: #24282a;
 
-    --text: #f4f0fa;
-    --muted: #9992a8;
+    /* Background Opacity */
+    --hero-opacity: 0.35;
+    --portfolio-opacity: 0.10;
 
-    --purple: #a855f7;
-    --magenta: #e879f9;
+    /* Typography */
+    --text: #e9e1d5;
+    --muted: #b1aaa0;
 
-    --border: rgba(185, 145, 220, 0.16);
+    /* Accent Colors */
+    --gold: #c69b57;
+    --gold-light: #e0bd80;
+    --crimson: #793d35;
+    --teal: #83c9c7;
+
+    /* Borders */
+    --border: rgba(198, 155, 87, 0.25);
+
+    /* Fonts */
     --mono: 'DM Mono', monospace;
+    --display: 'Cinzel', Georgia, serif;
+
+    /* Compatibility */
+    --purple: var(--gold);
+    --magenta: var(--teal);
 }
 
 /* =========================================
-   GLOBAL RESET
+   CSS RESET
 ========================================= */
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-/* =========================================
-   PAGE DEFAULTS
-========================================= */
-
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    background: var(--bg);
+
+    background-color: var(--bg);
+    color: var(--text);
 }
 
-/* =========================================
-   BACKGROUND EFFECT
-========================================= */
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 78% 18%,
-            rgba(120, 48, 165, 0.12),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 10% 75%,
-            rgba(80, 40, 130, 0.08),
-            transparent 32%
-        );
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
 }
-
-/* =========================================
-   ELEMENT DEFAULTS
-========================================= */
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
-button {
+button,
+input,
+textarea {
     font: inherit;
 }
 
-::selection {
-    color: white;
-    background: rgba(168, 85, 247, 0.45);
+button {
+    cursor: pointer;
+}
+
+img,
+svg {
+    max-width: 100%;
+}
+
+img {
+    display: block;
 }
 
 /* =========================================
-   LAYOUT CONTAINERS
+   CONTINUOUS PAGE BACKGROUND
+========================================= */
+
+#root {
+    position: relative;
+    isolation: isolate;
+
+    min-height: 100vh;
+
+    background-color: var(--bg);
+}
+
+/* Shared background for Hero and Portfolio */
+
+#root::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: url('../assets/backgrounds/brick-wall-bg.png');
+    background-position: top left;
+    background-repeat: repeat;
+    background-size: 1400px auto;
+
+    opacity: var(--portfolio-opacity);
+    pointer-events: none;
+}
+
+/* =========================================
+   SHARED LAYOUT
 ========================================= */
 
 .section-shell {
@@ -98,52 +142,168 @@ button {
     margin-inline: auto;
 }
 
-/* =========================================
-   SECTION LABELS
-========================================= */
+section {
+    position: relative;
+}
 
+.section-eyebrow,
 .eyebrow {
-    color: #b9a9c9;
-    font: 10px var(--mono);
+    color: var(--gold-light);
+
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
     letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
 /* =========================================
-   PAGE NOTE
+   GLOBAL TEXT ALIGNMENT
 ========================================= */
 
-.page-note {
-    width: min(1120px, calc(100% - 64px));
-    margin: 0 auto 100px;
-    padding-top: 24px;
-
-    border-top: 1px solid var(--border);
-
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.page-note p {
-    margin-top: 12px;
+p {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   CENTERED TEXT EXCEPTIONS
 ========================================= */
 
-@media (max-width: 640px) {
-    .section-shell,
-    .page-note {
-        width: min(calc(100% - 40px), 520px);
-    }
-
-    .page-note {
-        margin-bottom: 60px;
-    }
+.contact-header p,
+.footer-brand p {
+    text-align: center;
 }
 
 /* =========================================
    ACCESSIBILITY
+========================================= */
+
+::selection {
+    color: var(--bg);
+    background-color: var(--gold-light);
+}
+
+:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   NAVBAR + HERO BACKGROUND
+========================================= */
+
+.hero-scene {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    width: 100%;
+
+    background-color: transparent;
+}
+
+/* =========================================
+   HERO WALLPAPER WITH SMOOTH FADE
+========================================= */
+
+.hero-scene::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: url('../assets/backgrounds/hero-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: var(--hero-opacity);
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 50%,
+        rgba(0, 0, 0, 0.95) 60%,
+        rgba(0, 0, 0, 0.75) 72%,
+        rgba(0, 0, 0, 0.40) 85%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 50%,
+        rgba(0, 0, 0, 0.95) 60%,
+        rgba(0, 0, 0, 0.75) 72%,
+        rgba(0, 0, 0, 0.40) 85%,
+        transparent 100%
+    );
+
+    pointer-events: none;
+}
+
+/* =========================================
+   PORTFOLIO CONTENT
+========================================= */
+
+.portfolio-content {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: transparent;
+}
+
+/* =========================================
+   TRANSPARENT SECTION BACKGROUNDS
+========================================= */
+
+.portfolio-content > section,
+.portfolio-content .projects-section,
+.portfolio-content .experience-section,
+.portfolio-content .toolkit-section,
+.portfolio-content .expertise-section,
+.portfolio-content .certifications-section,
+.portfolio-content .about-section,
+.portfolio-content .contact-section {
+    background: transparent;
+}
+
+/* =========================================
+   RESPONSIVE - TABLET & MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+    .hero-scene::before {
+        background-position: 60% center;
+        opacity: var(--hero-opacity);
+    }
+
+    #root::before {
+        background-size: 1000px auto;
+    }
+}
+
+/* =========================================
+   RESPONSIVE - SMALL MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+    .section-shell {
+        width: calc(100% - 40px);
+    }
+
+    html {
+        scroll-padding-top: 75px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,278 @@
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.site-header {
+    position: relative;
+    z-index: 100;
+
+    width: 100%;
+    max-width: none;
+    min-height: 68px;
+    margin: 0;
+    padding-inline: clamp(16px, 3vw, 60px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background-color: rgba(10, 15, 17, 0.64);
+    border-bottom: 1px solid rgba(198, 155, 87, 0.3);
+
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   BRAND / WORDMARK
+========================================= */
+
+.wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.wordmark-mark {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+    object-fit: contain;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    transform: none;
+
+    filter: drop-shadow(
+        0 0 5px rgba(198, 155, 87, 0.22)
+    );
+}
+
+.wordmark-name {
+    color: var(--text);
+
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.4vw, 24px);
+
+    flex-shrink: 0;
+}
+
+.nav-links a {
+    color: var(--text);
+
+    font-size: 13.75px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--gold-light);
+}
+
+/* =========================================
+   CONTACT BUTTON
+========================================= */
+
+.nav-links .nav-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 9px 13px;
+
+    color: var(--text);
+    background-color: rgba(25, 30, 33, 0.92);
+
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.nav-links .nav-contact:hover,
+.nav-links .nav-contact:focus-visible {
+    color: var(--gold-light);
+    background-color: var(--surface-raised);
+}
+
+.nav-contact span {
+    color: var(--gold-light);
+}
+
+/* =========================================
+   MOBILE MENU TOGGLE
+========================================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 24px;
+    height: 2px;
+
+    background-color: var(--gold-light);
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+/* =========================================
+   COMPACT DESKTOP / TABLET
+========================================= */
+
+@media (max-width: 1200px) {
+    .site-header {
+        padding-inline: 24px;
+        gap: 16px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .wordmark-name {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+    }
+}
+
+/* =========================================
+   MOBILE / COLLAPSED NAVIGATION
+========================================= */
+
+@media (max-width: 900px) {
+    .site-header {
+        min-height: 64px;
+        padding-inline: 20px;
+        gap: 12px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 100%;
+        left: 20px;
+        right: 20px;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+
+        padding: 20px;
+
+        background-color: rgba(18, 23, 26, 0.97);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+    }
+
+    .nav-links .nav-contact {
+        width: 100%;
+        padding: 12px 15px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .site-header {
+        padding-inline: 16px;
+    }
+
+    .wordmark {
+        gap: 8px;
+    }
+
+    .wordmark-name {
+        font-size: 10px;
+        letter-spacing: 0.02em;
+    }
+
+    .wordmark-mark {
+        width: 26px;
+        height: 26px;
+    }
+
+    .nav-links {
+        left: 16px;
+        right: 16px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-links a,
+    .nav-links .nav-contact,
+    .menu-toggle span {
+        transition: none;
+    }
+}
